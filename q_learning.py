@@ -4,9 +4,6 @@ import matplotlib.pyplot as plt
 
 
 def update_q_table(Q, s, a, r, sprime, alpha, gamma):
-    """
-    Update Q-table using the Q-learning rule.
-    """
     td_target = r + gamma * np.max(Q[sprime])
     td_error = td_target - Q[s, a]
     Q[s, a] += alpha * td_error
@@ -14,9 +11,6 @@ def update_q_table(Q, s, a, r, sprime, alpha, gamma):
 
 
 def epsilon_greedy(Q, s, epsilone):
-    """
-    Implement epsilon-greedy policy.
-    """
     if np.random.rand() < epsilone:
         return np.random.randint(0, Q.shape[1])
     else:
